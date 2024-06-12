@@ -1765,9 +1765,13 @@ HTML
         private function extract_variables()
         {
             if ($this->query_type == 'create') {
-                $this->prepared_query = $this->rewritten_query;
+               $this->prepared_query = $this->rewritten_query;
+               return;
+            }
 
-                return;
+            if ($this->query_type == 'showindex') {
+               $this->prepared_query = $this->rewritten_query;
+               return;
             }
 
             //long queries can really kill this
